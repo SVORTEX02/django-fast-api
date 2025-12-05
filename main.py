@@ -2,6 +2,12 @@ from fastapi import FastAPI, Request,Path,HTTPException,Query
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 import json
+
+from pydantic import BaseModel,EmailStr,AnyUrl,Field
+from typing import List,Dict,Optional,Annotated
+
+from pydantic import field_validator
+
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
@@ -48,6 +54,30 @@ def view():
     return data
 
 
+@app.get('/hella/{id}')
+def view_ply(id:int=Path(...,description="jersey number of the player",example=7)):
+    with open('players.json','r') as f:
+        data = json.load(f)
+    
+    player = next((p for p in data if p['id'] == id), None)
+    if player:
+        return player
+    
+    raise HTTPException(status_code=404, detail='Player not Found')
+
+
+@app.post('/hella/{id}')
+def view_ply(id:int=Path(...,description="jersey number of the player",example=7)):
+    with open('players.json','r') as f:
+        data = json.load(f)
+    
+    player = next((p for p in data if p['id'] == id), None)
+    if player:
+        return player
+    
+    raise HTTPException(status_code=404, detail='Player not Found')
+
+
 
 @app.get('/patient/{patient_id}')
 def view_patient(patient_id:str=Path(...,description='ID of the patient in the DB',example='P001')):
@@ -81,4 +111,50 @@ def sort_patients(
     )
 
     return sorted_data
-# dgjnrg
+
+
+
+class Stats(BaseModel):
+    appearances: int
+    goals: int | None = None
+    assists: int | None = None
+
+class Player(BaseModel):
+    id: int
+    name: str
+    age: int
+    position: str
+    club: str
+    nationality: str
+    jersey_number: int
+    stats: Stats
+    
+    
+    @field_validator("age")
+    def check_age(cls, v):
+        if v <= 0:
+            raise ValueError("Age must be positive")
+        return v
+    
+    
+with open('players.json','r') as f:
+    data = json.load(f)
+
+with open('players.json','r') as f:
+    data = json.load(f)
+
+players = [Player(**player) for player in data]
+
+print(players)
+
+
+class Title(BaseModel):
+    title:str
+    year:int
+    rating:float
+    
+    @field_validator("year")
+    def check(cls,v):
+        if v<=0:
+            raise ValueError("Year must be in positive")
+        return v
