@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 import json
 
-from pydantic import BaseModel,EmailStr,AnyUrl,Field
+from pydantic import BaseModel,EmailStr,AnyUrl,Field,ValidationError
 from typing import List,Dict,Optional,Annotated
 
 from pydantic import field_validator
@@ -79,13 +79,15 @@ def view_ply(id:int=Path(...,description="jersey number of the player",example=7
 
 
 
-@app.get('/patient/{patient_id}')
-def view_patient(patient_id:str=Path(...,description='ID of the patient in the DB',example='P001')):
-    # load all the patients
-    data =load_data()
+@app.get('/patient/{patient_id:P\\d{3}}')
+def view_patient(patient_id: str = Path(..., description='ID of the patient in the DB',regex="^P\\d{3}$" , example='P001')):
+    data = load_data()
     if patient_id in data:
         return data[patient_id]
-    raise HTTPException(status_code=404,detail='Patient Not Found')
+    raise HTTPException(status_code=404, detail='Patient Not Found')
+
+
+
 
 @app.get('/sort')
 def sort_patients(
@@ -158,3 +160,28 @@ class Title(BaseModel):
         if v<=0:
             raise ValueError("Year must be in positive")
         return v
+    
+    
+    
+class User(BaseModel):
+    username:Annotated[str,Field(min_length=2,max_length=100)]
+    email:str
+    age:Annotated[int,Field(ge=12,le=100)]
+    
+    @field_validator("age")
+    def check(cls,v):
+        if v<=0:
+            raise ValueError("Year must be in positive")
+        return v
+    
+try:  
+    user1=User(username="Vortex",email="vortex@gmail.com",age="30")
+except ValidationError as e:
+    print(e)
+    
+
+# print(user1)
+
+# print(user1.model_dump())
+
+# print(user1.model_dump_json(indent=4))
