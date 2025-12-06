@@ -185,3 +185,54 @@ except ValidationError as e:
 # print(user1.model_dump())
 
 # print(user1.model_dump_json(indent=4))
+
+
+
+
+def load_emp():
+    with open('emp.json','r') as f:
+        data2=json.load(f)
+    return data2
+
+@app.get('/emp')
+def view_emp():
+    x=load_emp()
+    return x
+
+@app.get('/filtered_emp/{emp_id}')
+def filter_emp(emp_id:int=Path(...,Title="EMPLOYEE DETAIL FETCHING",description="Provide Us the employeeId Between(1-50)",example="1,2,or 40")):
+    d=load_emp()
+    for emp in d:
+        if emp['id']== emp_id:
+            return emp 
+
+    raise HTTPException(status_code=400, detail="PLease ENter a Valid Employee Id")
+
+
+
+class Employee(BaseModel):
+    id: int=Field(max_length=2,strict=True)
+    name: Annotated[str,Field(max_length=100,title='Name of patient',description='dont Enter the digtis',examples=['Nitish','Amit'])]
+    age: int =Field(max_digits=2,ge=1)
+    department:str=Field(min_length=2,strict=True)
+    email:str
+    
+    
+    @field_validator('age',mode='before')
+    def check_age(cls, value):
+        if value < 18:
+            raise ValueError("Employee must be at least 18")
+        return value
+    
+emp_database=[]
+
+@app.post("/empData_send")
+def send_emp(emp: Employee):
+        emp_database.append(emp.dict())
+        return {"message": "Employee added", "data": emp}
+
+    
+
+@app.get("/emp_base")
+def get_emp():
+    return emp_database 
