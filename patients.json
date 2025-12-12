@@ -1,52 +1,156 @@
-{
-  "P001": {
-    "name": "Ananya Sharma",
-    "city": "Guwahati",
-    "age": 28,
-    "gender": "female",
-    "height": 1.65,
-    "weight": 90.0,
-    "bmi": 33.06,
-    "verdict": "Obese"
-  },
-  "P002": {
-    "name": "Ravi Mehta",
-    "city": "Mumbai",
-    "age": 35,
-    "gender": "male",
-    "height": 1.75,
-    "weight": 85,
-    "bmi": 27.76,
-    "verdict": "Overweight"
-  },
-  "P003": {
-    "name": "Sneha Kulkarni",
-    "city": "Pune",
-    "age": 22,
-    "gender": "female",
-    "height": 1.6,
-    "weight": 45,
-    "bmi": 17.58,
-    "verdict": "Underweight"
-  },
-  "P004": {
-    "name": "Arjun Verma",
-    "city": "Bangalore",
-    "age": 40,
-    "gender": "male",
-    "height": 1.8,
-    "weight": 95,
-    "bmi": 29.32,
-    "verdict": "Overweight"
-  },
-  "P005": {
-    "name": "Neha Sinha",
-    "city": "Kolkata",
-    "age": 30,
-    "gender": "female",
-    "height": 1.55,
-    "weight": 75,
-    "bmi": 31.22,
-    "verdict": "Obese"
-  }
-}
+[
+    {
+        "id": 1,
+        "name": "Lionel Messi",
+        "age": 36,
+        "position": "Forward",
+        "club": "Inter Miami",
+        "nationality": "Argentina",
+        "jersey_number": 10,
+        "stats": {
+            "appearances": 35,
+            "goals": 25,
+            "assists": 10
+        }
+    },
+    {
+        "id": 2,
+        "name": "Cristiano Ronaldo",
+        "age": 38,
+        "position": "Forward",
+        "club": "Al Nassr",
+        "nationality": "Portugal",
+        "jersey_number": 7,
+        "stats": {
+            "appearances": 33,
+            "goals": 28,
+            "assists": 5
+        }
+    },
+    {
+        "id": 3,
+        "name": "Kylian Mbapp\u00c3\u00a9",
+        "age": 25,
+        "position": "Forward",
+        "club": "Paris Saint-Germain",
+        "nationality": "France",
+        "jersey_number": 7,
+        "stats": {
+            "appearances": 30,
+            "goals": 22,
+            "assists": 12
+        }
+    },
+    {
+        "id": 4,
+        "name": "Kevin De Bruyne",
+        "age": 32,
+        "position": "Midfielder",
+        "club": "Manchester City",
+        "nationality": "Belgium",
+        "jersey_number": 17,
+        "stats": {
+            "appearances": 28,
+            "goals": 8,
+            "assists": 18
+        }
+    },
+    {
+        "id": 5,
+        "name": "Virgil van Dijk",
+        "age": 32,
+        "position": "Defender",
+        "club": "Liverpool",
+        "nationality": "Netherlands",
+        "jersey_number": 4,
+        "stats": {
+            "appearances": 34,
+            "goals": 5,
+            "assists": 2
+        }
+    },
+    {
+        "id": 6,
+        "name": "Manuel Neuer",
+        "age": 37,
+        "position": "Goalkeeper",
+        "club": "Bayern Munich",
+        "nationality": "Germany",
+        "jersey_number": 1,
+        "stats": {
+            "appearances": 33,
+            "clean_sheets": 18,
+            "saves": 95
+        }
+    },
+    {
+        "id": 7,
+        "name": "Neymar Jr.",
+        "age": 31,
+        "position": "Forward",
+        "club": "Al-Hilal",
+        "nationality": "Brazil",
+        "jersey_number": 10,
+        "stats": {
+            "appearances": 27,
+            "goals": 15,
+            "assists": 9
+        }
+    },
+    {
+        "id": 8,
+        "name": "Sergio Ramos",
+        "age": 37,
+        "position": "Defender",
+        "club": "Sevilla",
+        "nationality": "Spain",
+        "jersey_number": 4,
+        "stats": {
+            "appearances": 29,
+            "goals": 3,
+            "assists": 1
+        }
+    },
+    {
+        "id": 9,
+        "name": "Mohamed Salah",
+        "age": 31,
+        "position": "Forward",
+        "club": "Liverpool",
+        "nationality": "Egypt",
+        "jersey_number": 11,
+        "stats": {
+            "appearances": 32,
+            "goals": 20,
+            "assists": 10
+        }
+    },
+    {
+        "id": 10,
+        "name": "Luka Modri\u00c4\u2021",
+        "age": 38,
+        "position": "Midfielder",
+        "club": "Real Madrid",
+        "nationality": "Croatia",
+        "jersey_number": 10,
+        "stats": {
+            "appearances": 31,
+            "goals": 4,
+            "assists": 9
+        }
+    },
+    {
+        "id": 30,
+        "name": "IshowMEat",
+        "age": 30,
+        "position": "right wing",
+        "club": "MAKAFAKA",
+        "nationality": "GERMANDOG",
+        "jersey_number": 90,
+        "stats": {
+            "appearances": 2,
+            "goals": 1,
+            "assists": 10
+        }
+    }
+]

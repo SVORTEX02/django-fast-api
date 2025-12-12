@@ -1,0 +1,17 @@
+[
+  {
+    "student_id": 12,
+    "name": "Shrey Chauhan",
+    "address": {
+      "house_number": "221B",
+      "street_name": "Baker Street",
+      "area": "Andheri East",
+      "landmark": "Near Metro Station",
+      "city": "Mumbai",
+      "district": "Mumbai Suburban",
+      "state": "Maharashtra",
+      "country": "India",
+      "postal_code": "400001"
+    }
+  }
+]

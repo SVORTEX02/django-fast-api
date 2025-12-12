@@ -1,0 +1,7 @@
+{
+  "fruits": ["apple", "banana", "mango", "orange"],
+  "colors": ["red", "green", "blue", "yellow"],
+  "cities": ["New York", "London", "Paris", "Tokyo"],
+  "numbers": [1, 2, 3, 4, 5],
+  "sports": ["football", "cricket", "basketball", "tennis"]
+}
